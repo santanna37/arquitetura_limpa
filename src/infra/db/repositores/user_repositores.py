@@ -28,3 +28,24 @@ class UsersRepository:
             finally:
                 print('acabou')
                 database.close()
+
+
+    @classmethod
+    def select_user(cls, fisrt_name: str) -> any: 
+        with DBConnectionHandler() as database: 
+            try: 
+                users = (
+                    database.query(UsersEntities)
+                    .filter(UsersEntities.first_name == first_name)
+                    .all()
+                )
+                return users
+            
+            except Exception as exception: 
+                database.rollback()
+                print(exception)
+                raise exception
+                
+            finally:
+                print('acabou')
+                database.close()

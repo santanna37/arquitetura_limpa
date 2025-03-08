@@ -24,3 +24,12 @@ def test_insert_user():
 
     print()
     print(registry)
+
+def test_select_user():
+    fisrt_name = 'test_insert'
+    last_name = 'test_last_inset'
+    age = 44
+
+    user_repository = UsersRepository()
+    response = user_repository.select_user(fisrt_name)
+    print(response)

@@ -31,7 +31,7 @@ def test_find_erro_len():
         user_finder.find(first_name)
         assert False
     except Exception as exception:
-        assert str(exception) == "Nome Inválido: Tamanho do nome excede o limite"
+        assert str(exception) == "Nome_invalido: Tamanho do nome"
 
 def test_find_erro_search():
     

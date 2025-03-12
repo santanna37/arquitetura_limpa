@@ -11,6 +11,16 @@ class UserRegister(UserRegisterInterface):
 
     def register(self, first_name:str, last_name:str, age:int) -> Dict:
         self.__registry_user(first_name, last_name, age)
+        
+        return {
+            "message": "Usuário registrado com sucesso",
+            "user": {
+                "first_name": first_name,
+                "last_name": last_name,
+                "age": age
+            }
+        }
+
     
     def __registry_user(self, first_name:str, last_name:str, age:int) -> Dict:
         self.__users_repository.insert_user(

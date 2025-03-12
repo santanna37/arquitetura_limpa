@@ -14,5 +14,7 @@ def test_register():
 
     response = user_register.register(first_name, last_name, age)
 
+    print("===")
     print(response)
+
 

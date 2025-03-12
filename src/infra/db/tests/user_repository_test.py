@@ -14,7 +14,8 @@ class UserRepositoryTest():
         self.insert_user_atributes["last_name"] = last_name 
         self.insert_user_atributes["age"] = 10
         self.insert_user_atributes["id"] = 2
-        return 
+        return self.insert_user_atributes["first_name"] 
+
 
     def select_user(self, first_name: str) -> List[UserModels]:
         self.select_user_atributes["first_name"] = first_name

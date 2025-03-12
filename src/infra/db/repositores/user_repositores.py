@@ -19,17 +19,15 @@ class UsersRepository(UsersRepositoryInterface):
                 )
                 database.add(new_user)
                 database.commit()
-                print(new_user)
+                
                 
 
             except Exception as exception: 
                 database.rollback()
-                print(exception)
                 raise exception
                 
 
             finally:
-                print('acabou')
                 database.close()
 
 
@@ -50,5 +48,4 @@ class UsersRepository(UsersRepositoryInterface):
                 raise exception
                 
             finally:
-                print('acabou')
                 database.close()

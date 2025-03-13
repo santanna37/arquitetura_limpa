@@ -1,6 +1,7 @@
 from src.domain.use_case.user_finder import UserFinder as UserFinderInterface
 from src.data.interface.user_reposirores import UsersRepositoryInterface
 from typing import Dict, List
+from src.errors.types import HttpBadRequest, HttpNotFound
 
 
 class UserFinder(UserFinderInterface):
@@ -17,15 +18,15 @@ class UserFinder(UserFinderInterface):
     @classmethod
     def __validate_name(cls, first_name: str):
         if not first_name.isalpha():
-            raise Exception("Nome Inválido: números no nome")
+            raise HttpBadRequest("Nome Inválido: números no nome")
 
         if len(first_name) > 18:
-            raise Exception("Nome_invalido: Tamanho do nome")
+            raise HttpBadRequest("Nome_invalido: Tamanho do nome")
         
     def __search_user(self, first_name: str) -> List:
         users = self.__users_repository.select_user(first_name = first_name)
         if users == []:
-            raise Exception("Nome Inválido: Nome não encontrado")
+            raise HttpNotFound("Nome Inválido: Nome não encontrado")
         return users
 
     @classmethod
